@@ -1,7 +1,12 @@
-import './App.css';
+import { Header } from './components/header';
+import Input from './components/input';
 
-function App() {
-    return <div className="App">Project ready</div>;
-}
-
+const App = () => {
+    return (
+        <>
+            <Header />
+            <Input />
+        </>
+    );
+};
 export default App;
