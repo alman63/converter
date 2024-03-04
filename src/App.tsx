@@ -11,39 +11,44 @@ export const App = () => {
         Object.keys(initValue.Valute)[0]
     );
     const [valueInput, setValueInput] = useState('');
-    const [valueInputResult, setValueInputResult] = useState('');
 
     const handlerValueInput = (valueInput: string) => {
-        setValueInput(valueInput);
-        setValueInputResult(
-            (Number(valueInput) / valutes[valueSelect].Value).toString()
-        );
+        setValueInput(valueInput.replace(/[^\d]/g, ''));
     };
-    const handlerValueInputResult = (valueInputResult: string) => {
-        setValueInputResult(valueInputResult);
+
+    const handlerValueInputResult = (valueInput: string) => {
         setValueInput(
-            (Number(valueInputResult) * valutes[valueSelect].Value).toString()
+            (
+                Number(valueInput.replace(/[^\d]/g, '')) *
+                valutes[valueSelect].Value
+            ).toString()
         );
     };
     const handlerChangeSelect = (valueSelect: string) => {
         setValueSelect(valueSelect);
-        setValueInputResult(
-            (Number(valueInput) / valutes[valueSelect].Value).toString()
-        );
     };
 
     return (
         <>
             <Header />
-            <Input onChange={handlerValueInput} value={valueInput} />
-            {initValue.Valute.RUS.Name}
+            <p>
+                <Input
+                    onChange={handlerValueInput}
+                    value={valueInput}
+                    select={valueSelect}
+                />
+                Валюта: {initValue.Valute.RUS.Name}
+            </p>
             <hr />
-            <InputResult
-                onChange={handlerValueInputResult}
-                value={valueInputResult}
-            />
-            {valutes[valueSelect]?.Name}
-            <Select onChange={handlerChangeSelect} valutes={valutes} />
+            <p>
+                <InputResult
+                    onChange={handlerValueInputResult}
+                    value={valueInput}
+                    select={valueSelect}
+                />
+                Валюта: {valutes[valueSelect]?.Name}
+                <Select onChange={handlerChangeSelect} valutes={valutes} />
+            </p>
         </>
     );
 };
