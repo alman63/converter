@@ -13,7 +13,6 @@ export const Input: FC<Props> = ({ onChange, value }) => {
 
     const onClickInput = () => {
         const input = document.querySelector('.first') as HTMLInputElement;
-        console.log(value);
         if (Number(value) === 0) input.value = '';
     };
 
