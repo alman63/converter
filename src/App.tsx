@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Header } from './components/header';
 import { Input } from './components/input';
 import { InputResult } from './components/inputResult';
@@ -7,6 +7,7 @@ import { valutes } from './const/getValutes';
 import { initValue } from './const/constRUS';
 
 export const App = () => {
+    console.log('app');
     const [valueSelect, setValueSelect] = useState(
         Object.keys(initValue.Valute)[0]
     );
@@ -24,9 +25,9 @@ export const App = () => {
             ).toString()
         );
     };
-    const handlerChangeSelect = (valueSelect: string) => {
+    const handlerChangeSelect = useCallback((valueSelect: string) => {
         setValueSelect(valueSelect);
-    };
+    }, []);
 
     return (
         <>

@@ -15,7 +15,7 @@ export const Input: FC<Props> = ({ onChange, value }) => {
         const input = document.querySelector('.first') as HTMLInputElement;
         if (Number(value) === 0) input.value = '';
     };
-
+    console.log('input');
     return (
         <>
             <input

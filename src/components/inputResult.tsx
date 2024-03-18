@@ -13,6 +13,7 @@ export const InputResult: FC<Props> = ({ onChange, value, select }) => {
     ) => {
         onChange(event.target.value);
     };
+    console.log('input2');
     return (
         <>
             <input
