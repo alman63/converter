@@ -13,13 +13,13 @@ export const App = () => {
     const [valueInput, setValueInput] = useState('');
 
     const handlerValueInput = (valueInput: string) => {
-        setValueInput(valueInput.replace(/[^\d]/g, ''));
+        setValueInput(valueInput.replace(/[^\d.]/gi, ''));
     };
 
     const handlerValueInputResult = (valueInput: string) => {
         setValueInput(
             (
-                Number(valueInput.replace(/[^\d]/g, '')) *
+                Number(valueInput.replace(/[^\d.]/gi, '')) *
                 valutes[valueSelect].Value
             ).toString()
         );
